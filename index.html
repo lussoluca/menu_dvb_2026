@@ -60,7 +60,7 @@
 <header>
   <h1>🐺 Menu Vacanze di Branco — Dosi & Lista spesa</h1>
   <p>32 persone: 24 bimbi (8-12 anni) + 8 adulti</p>
-  <p>Dosi calcolate su <strong>26 porzioni equivalenti</strong> (bimbo attivo ≈ 0,75 porzione adulto). Modifica i campi: la lista spesa si aggiorna da sola.</p>
+  <p>Dosi calcolate su <strong>30 porzioni equivalenti</strong> (bimbo ≈ 0,9 porzione adulto: 24×0,9 + 8 = 29,6 ≈ 30). Modifica i campi: la lista spesa si aggiorna da sola.</p>
 </header>
 <main>
   <div id="menu"></div>
@@ -83,121 +83,121 @@
 const MENU = [
  {day:"Lunedì", meals:[
    {meal:"Pranzo", dishes:[
-     {name:"Insalata di riso", flag:"dosi originali = porzione singola, ricalcolate per il gruppo",
-      ings:[{n:"Riso",k:"riso",v:2000,u:"gr"},{n:"Wurstel",k:"wurstel",v:800,u:"gr"},
-            {n:"Formaggio",k:"formaggio",v:700,u:"gr"},{n:"Carote",k:"carote",v:600,u:"gr"},
-            {n:"Mais",k:"mais",v:1000,u:"gr",note:"≈3 barattoli"},
-            {n:"Olio EVO",k:"olio",v:100,u:"ml"},{n:"Sale",k:"sale",v:20,u:"gr"}]},
-     {name:"Melone", ings:[{n:"Melone",k:"melone",v:4,u:"pz"}]}
+     {name:"Insalata di riso",
+      ings:[{n:"Riso",k:"riso",v:2300,u:"gr"},{n:"Wurstel",k:"wurstel",v:900,u:"gr"},
+            {n:"Formaggio",k:"formaggio",v:800,u:"gr"},{n:"Carote",k:"carote",v:700,u:"gr"},
+            {n:"Mais",k:"mais",v:1200,u:"gr",note:"≈4 barattoli"},
+            {n:"Olio EVO",k:"olio",v:120,u:"ml"},{n:"Sale",k:"sale",v:25,u:"gr"}]},
+     {name:"Melone", ings:[{n:"Melone",k:"melone",v:5,u:"pz"}]}
    ]},
    {meal:"Cena", dishes:[
      {name:"Lasagne al ragù",
-      ings:[{n:"Besciamella",k:"besciamella",v:3,u:"lt"},{n:"Formaggio",k:"formaggio",v:500,u:"gr"},
-            {n:"Lasagne fresche",k:"lasagne",v:2.5,u:"kg"},{n:"Ragù",k:"ragu",ready:true},
-            {n:"Sale",k:"sale",v:20,u:"gr"}]},
+      ings:[{n:"Besciamella",k:"besciamella",v:3.5,u:"lt"},{n:"Formaggio",k:"formaggio",v:600,u:"gr"},
+            {n:"Lasagne fresche",k:"lasagne",v:3,u:"kg"},{n:"Ragù",k:"ragu",ready:true},
+            {n:"Sale",k:"sale",v:25,u:"gr"}]},
      {name:"Carote al burro",
-      ings:[{n:"Carote",k:"carote",v:2500,u:"gr"},{n:"Burro",k:"burro",v:250,u:"gr"},
-            {n:"Sale",k:"sale",v:15,u:"gr"}]},
+      ings:[{n:"Carote",k:"carote",v:2900,u:"gr"},{n:"Burro",k:"burro",v:300,u:"gr"},
+            {n:"Sale",k:"sale",v:20,u:"gr"}]},
      {name:"Frutta",
-      ings:[{n:"Frutta assortita",k:"frutta",v:4000,u:"gr",note:"stima ~150g/persona"}]}
+      ings:[{n:"Frutta assortita",k:"frutta",v:4600,u:"gr",note:"stima ~145g/persona"}]}
    ]}
  ]},
  {day:"Martedì", meals:[
    {meal:"Pranzo", dishes:[
      {name:"Pasta al pesto",
-      ings:[{n:"Pasta",k:"pasta",v:3,u:"kg"},{n:"Pesto",k:"pesto",ready:true},
-            {n:"Sale",k:"sale",v:30,u:"gr"}]},
+      ings:[{n:"Pasta",k:"pasta",v:3.5,u:"kg"},{n:"Pesto",k:"pesto",ready:true},
+            {n:"Sale",k:"sale",v:35,u:"gr"}]},
      {name:"Caprese",
-      ings:[{n:"Pomodori",k:"pomodori",v:4000,u:"gr"},{n:"Mozzarella",k:"mozzarella",v:2000,u:"gr"},
-            {n:"Olio EVO",k:"olio",v:100,u:"ml"},{n:"Sale",k:"sale",v:15,u:"gr"}]}
+      ings:[{n:"Pomodori",k:"pomodori",v:4600,u:"gr"},{n:"Mozzarella",k:"mozzarella",v:2300,u:"gr"},
+            {n:"Olio EVO",k:"olio",v:120,u:"ml"},{n:"Sale",k:"sale",v:20,u:"gr"}]}
    ]},
    {meal:"Cena", dishes:[
-     {name:"Frittata di zucchine", note:"aggiungere ~18 uova (non in elenco originale)",
-      ings:[{n:"Zucchine",k:"zucchine",v:2500,u:"gr"},{n:"Ricotta",k:"ricotta",v:1000,u:"gr"},
-            {n:"Formaggio",k:"formaggio",v:500,u:"gr"},{n:"Uova",k:"uova",v:18,u:"pz"},
-            {n:"Olio EVO",k:"olio",v:60,u:"ml"},{n:"Sale",k:"sale",v:15,u:"gr"}]},
+     {name:"Frittata di zucchine", note:"aggiungere ~21 uova (non in elenco originale)",
+      ings:[{n:"Zucchine",k:"zucchine",v:2900,u:"gr"},{n:"Ricotta",k:"ricotta",v:1200,u:"gr"},
+            {n:"Formaggio",k:"formaggio",v:600,u:"gr"},{n:"Uova",k:"uova",v:21,u:"pz"},
+            {n:"Olio EVO",k:"olio",v:70,u:"ml"},{n:"Sale",k:"sale",v:20,u:"gr"}]},
      {name:"Torta salata alle zucchine",
-      ings:[{n:"Zucchine",k:"zucchine",v:1500,u:"gr"},{n:"Farina (base)",k:"farina",v:500,u:"gr"},
-            {n:"Olio (base)",k:"olio",v:60,u:"ml"},{n:"Vino bianco (base)",k:"vino",v:100,u:"ml"},
-            {n:"Sale",k:"sale",v:15,u:"gr"}]},
-     {name:"Torta salata porri e speck",
-      ings:[{n:"Porri",k:"porri",v:800,u:"gr"},{n:"Speck a dadini",k:"speck",v:400,u:"gr"},
-            {n:"Farina (base)",k:"farina",v:500,u:"gr"},{n:"Olio (base)",k:"olio",v:60,u:"ml"},
-            {n:"Vino bianco (base)",k:"vino",v:100,u:"ml"},{n:"Sale",k:"sale",v:15,u:"gr"}]},
-     {name:"Purè",
-      ings:[{n:"Patate",k:"patate",v:4000,u:"gr"},{n:"Latte",k:"latte",v:800,u:"ml"},
-            {n:"Burro",k:"burro",v:250,u:"gr"},{n:"Parmigiano",k:"parmigiano",v:400,u:"gr"},
+      ings:[{n:"Zucchine",k:"zucchine",v:1700,u:"gr"},{n:"Farina (base)",k:"farina",v:600,u:"gr"},
+            {n:"Olio (base)",k:"olio",v:70,u:"ml"},{n:"Vino bianco (base)",k:"vino",v:120,u:"ml"},
             {n:"Sale",k:"sale",v:20,u:"gr"}]},
+     {name:"Torta salata porri e speck",
+      ings:[{n:"Porri",k:"porri",v:900,u:"gr"},{n:"Speck a dadini",k:"speck",v:450,u:"gr"},
+            {n:"Farina (base)",k:"farina",v:600,u:"gr"},{n:"Olio (base)",k:"olio",v:70,u:"ml"},
+            {n:"Vino bianco (base)",k:"vino",v:120,u:"ml"},{n:"Sale",k:"sale",v:20,u:"gr"}]},
+     {name:"Purè",
+      ings:[{n:"Patate",k:"patate",v:4600,u:"gr"},{n:"Latte",k:"latte",v:900,u:"ml"},
+            {n:"Burro",k:"burro",v:300,u:"gr"},{n:"Parmigiano",k:"parmigiano",v:450,u:"gr"},
+            {n:"Sale",k:"sale",v:25,u:"gr"}]},
      {name:"Budino (in busta)",
-      ings:[{n:"Preparato per budino (in busta)",k:"prep-budino",v:7,u:"pz"},{n:"Latte",k:"latte",v:3500,u:"ml"}]}
+      ings:[{n:"Preparato per budino (in busta)",k:"prep-budino",v:8,u:"pz"},{n:"Latte",k:"latte",v:4000,u:"ml"}]}
    ]}
  ]},
  {day:"Mercoledì", meals:[
    {meal:"Pranzo", dishes:[
-     {name:"Panini", note:"non specificato: stima 2 panini/persona + affettati",
-      ings:[{n:"Panini",k:"panini",v:64,u:"pz"},{n:"Affettati misti",k:"affettati",v:2000,u:"gr"}]}
+     {name:"Panini", note:"non specificato: stima ~2 panini/persona + affettati",
+      ings:[{n:"Panini",k:"panini",v:72,u:"pz"},{n:"Affettati misti",k:"affettati",v:2300,u:"gr"}]}
    ]},
    {meal:"Cena", dishes:[
      {name:"Grigliata",
-      ings:[{n:"Salsiccia",k:"salsiccia",v:3000,u:"gr"},{n:"Wurstel",k:"wurstel",v:2000,u:"gr"},
-            {n:"Hamburger",k:"hamburger",v:40,u:"pz"},{n:"Sale",k:"sale",v:15,u:"gr"}]},
+      ings:[{n:"Salsiccia",k:"salsiccia",v:3500,u:"gr"},{n:"Wurstel",k:"wurstel",v:2300,u:"gr"},
+            {n:"Hamburger",k:"hamburger",v:46,u:"pz"},{n:"Sale",k:"sale",v:20,u:"gr"}]},
      {name:"Bruschette al pomodoro",
-      ings:[{n:"Pane",k:"pane",v:1500,u:"gr"},{n:"Pomodoro",k:"pomodori",v:1500,u:"gr"},
-            {n:"Olio EVO",k:"olio",v:100,u:"ml"},{n:"Sale",k:"sale",v:10,u:"gr"}]},
+      ings:[{n:"Pane",k:"pane",v:1700,u:"gr"},{n:"Pomodoro",k:"pomodori",v:1700,u:"gr"},
+            {n:"Olio EVO",k:"olio",v:120,u:"ml"},{n:"Sale",k:"sale",v:12,u:"gr"}]},
      {name:"Verdure grigliate", note:"non specificato: zucchine/melanzane/peperoni misti",
-      ings:[{n:"Verdure miste da griglia",k:"verdure-griglia",v:4000,u:"gr"},
-            {n:"Olio EVO",k:"olio",v:100,u:"ml"},{n:"Sale",k:"sale",v:15,u:"gr"}]}
+      ings:[{n:"Verdure miste da griglia",k:"verdure-griglia",v:4600,u:"gr"},
+            {n:"Olio EVO",k:"olio",v:120,u:"ml"},{n:"Sale",k:"sale",v:20,u:"gr"}]}
    ]}
  ]},
  {day:"Giovedì", meals:[
    {meal:"Pranzo", dishes:[
      {name:"Pasta al ragù di verdure",
-      ings:[{n:"Pasta",k:"pasta",v:3,u:"kg"},{n:"Ragù di verdure",k:"ragu-verdure",ready:true},
-            {n:"Sale",k:"sale",v:30,u:"gr"}]},
-     {name:"Insalata", ings:[{n:"Insalata",k:"insalata",v:1500,u:"gr"},
-            {n:"Olio EVO",k:"olio",v:100,u:"ml"},{n:"Sale",k:"sale",v:10,u:"gr"}]},
-     {name:"Carote", ings:[{n:"Carote",k:"carote",v:1500,u:"gr"}]},
-     {name:"Formaggio", ings:[{n:"Formaggio",k:"formaggio",v:1000,u:"gr"}]},
-     {name:"Tonno", ings:[{n:"Tonno",k:"tonno",v:800,u:"gr",note:"≈10 scatolette"}]}
+      ings:[{n:"Pasta",k:"pasta",v:3.5,u:"kg"},{n:"Ragù di verdure",k:"ragu-verdure",ready:true},
+            {n:"Sale",k:"sale",v:35,u:"gr"}]},
+     {name:"Insalata", ings:[{n:"Insalata",k:"insalata",v:1700,u:"gr"},
+            {n:"Olio EVO",k:"olio",v:120,u:"ml"},{n:"Sale",k:"sale",v:12,u:"gr"}]},
+     {name:"Carote", ings:[{n:"Carote",k:"carote",v:1700,u:"gr"}]},
+     {name:"Formaggio", ings:[{n:"Formaggio",k:"formaggio",v:1200,u:"gr"}]},
+     {name:"Tonno", ings:[{n:"Tonno",k:"tonno",v:900,u:"gr",note:"≈11 scatolette"}]}
    ]},
    {meal:"Cena", dishes:[
      {name:"Passato di verdura con crostini",
-      ings:[{n:"Patate",k:"patate",v:1500,u:"gr"},{n:"Porri",k:"porri",v:600,u:"gr"},
-            {n:"Carote",k:"carote",v:800,u:"gr"},{n:"Piselli",k:"piselli",v:800,u:"gr"},
-            {n:"Pane (crostini)",k:"pane",v:800,u:"gr"},
-            {n:"Olio EVO",k:"olio",v:60,u:"ml"},{n:"Sale",k:"sale",v:20,u:"gr"}]},
+      ings:[{n:"Patate",k:"patate",v:1700,u:"gr"},{n:"Porri",k:"porri",v:700,u:"gr"},
+            {n:"Carote",k:"carote",v:900,u:"gr"},{n:"Piselli",k:"piselli",v:900,u:"gr"},
+            {n:"Pane (crostini)",k:"pane",v:900,u:"gr"},
+            {n:"Olio EVO",k:"olio",v:70,u:"ml"},{n:"Sale",k:"sale",v:25,u:"gr"}]},
      {name:"Bastoncini di pesce",
-      ings:[{n:"Bastoncini di pesce",k:"bastoncini",v:3000,u:"gr",note:"≈100 pezzi"},
-            {n:"Sale",k:"sale",v:10,u:"gr"}]},
+      ings:[{n:"Bastoncini di pesce",k:"bastoncini",v:3500,u:"gr",note:"≈115 pezzi"},
+            {n:"Sale",k:"sale",v:12,u:"gr"}]},
      {name:"Patate fritte al forno",
-      ings:[{n:"Patate fritte al forno (surgelate)",k:"patate-fritte",v:5000,u:"gr"},
-            {n:"Sale",k:"sale",v:15,u:"gr"}]}
+      ings:[{n:"Patate fritte al forno (surgelate)",k:"patate-fritte",v:5800,u:"gr"},
+            {n:"Sale",k:"sale",v:20,u:"gr"}]}
    ]}
  ]},
  {day:"Sabato", note:"il file non contiene Venerdì", meals:[
    {meal:"Pranzo", dishes:[
      {name:"Pasta fredda",
-      ings:[{n:"Pasta",k:"pasta",v:3,u:"kg"},{n:"Prosciutto a dadini",k:"prosciutto",v:600,u:"gr"},
-            {n:"Pomodori",k:"pomodori",v:1500,u:"gr"},{n:"Olive nere",k:"olive",v:400,u:"gr"},
-            {n:"Formaggio",k:"formaggio",v:800,u:"gr"},
-            {n:"Olio EVO",k:"olio",v:100,u:"ml"},{n:"Sale",k:"sale",v:30,u:"gr"}]},
+      ings:[{n:"Pasta",k:"pasta",v:3.5,u:"kg"},{n:"Prosciutto a dadini",k:"prosciutto",v:700,u:"gr"},
+            {n:"Pomodori",k:"pomodori",v:1700,u:"gr"},{n:"Olive nere",k:"olive",v:450,u:"gr"},
+            {n:"Formaggio",k:"formaggio",v:900,u:"gr"},
+            {n:"Olio EVO",k:"olio",v:120,u:"ml"},{n:"Sale",k:"sale",v:35,u:"gr"}]},
      {name:"Polpettine di ceci",
-      ings:[{n:"Ceci in scatola",k:"ceci",v:2.5,u:"kg"},{n:"Uova",k:"uova",v:5,u:"pz"},
-            {n:"Parmigiano",k:"parmigiano",v:300,u:"gr"},{n:"Pangrattato",k:"pangrattato",v:500,u:"gr"},
-            {n:"Provola",k:"provola",v:400,u:"gr"},{n:"Prezzemolo",k:"prezzemolo",v:1,u:"pz",note:"mazzo"},
-            {n:"Patate bollite",k:"patate",v:1500,u:"gr"},{n:"Zucchine cotte",k:"zucchine",v:800,u:"gr"},
-            {n:"Olio per frittura",k:"olio",v:500,u:"ml"},{n:"Sale",k:"sale",v:20,u:"gr"}]},
+      ings:[{n:"Ceci in scatola",k:"ceci",v:3,u:"kg"},{n:"Uova",k:"uova",v:6,u:"pz"},
+            {n:"Parmigiano",k:"parmigiano",v:350,u:"gr"},{n:"Pangrattato",k:"pangrattato",v:600,u:"gr"},
+            {n:"Provola",k:"provola",v:450,u:"gr"},{n:"Prezzemolo",k:"prezzemolo",v:1,u:"pz",note:"mazzo"},
+            {n:"Patate bollite",k:"patate",v:1700,u:"gr"},{n:"Zucchine cotte",k:"zucchine",v:900,u:"gr"},
+            {n:"Olio per frittura",k:"olio",v:600,u:"ml"},{n:"Sale",k:"sale",v:25,u:"gr"}]},
      {name:"Ratatouille di carote, patate e piselli",
-      ings:[{n:"Carote",k:"carote",v:1000,u:"gr"},{n:"Patate",k:"patate",v:1500,u:"gr"},
-            {n:"Cipolla",k:"cipolla",v:500,u:"gr"},{n:"Piselli primavera",k:"piselli",v:1000,u:"gr"},
-            {n:"Olio EVO",k:"olio",v:60,u:"ml"},{n:"Sale",k:"sale",v:20,u:"gr"}]}
+      ings:[{n:"Carote",k:"carote",v:1200,u:"gr"},{n:"Patate",k:"patate",v:1700,u:"gr"},
+            {n:"Cipolla",k:"cipolla",v:600,u:"gr"},{n:"Piselli primavera",k:"piselli",v:1200,u:"gr"},
+            {n:"Olio EVO",k:"olio",v:70,u:"ml"},{n:"Sale",k:"sale",v:25,u:"gr"}]}
    ]},
    {meal:"Cena", dishes:[
      {name:"Pizza",
-      ings:[{n:"Farina",k:"farina",v:4,u:"kg"},{n:"Cubetti di lievito",k:"lievito",v:6,u:"pz"},
-            {n:"Polpa di pomodoro",k:"polpa-pomodoro",v:2000,u:"gr"},
-            {n:"Mozzarella",k:"mozzarella",v:1500,u:"gr"},{n:"Wurstel",k:"wurstel",v:200,u:"gr"},
-            {n:"Olio EVO",k:"olio",v:100,u:"ml"},{n:"Sale",k:"sale",v:40,u:"gr"}]}
+      ings:[{n:"Farina",k:"farina",v:4.5,u:"kg"},{n:"Cubetti di lievito",k:"lievito",v:7,u:"pz"},
+            {n:"Polpa di pomodoro",k:"polpa-pomodoro",v:2300,u:"gr"},
+            {n:"Mozzarella",k:"mozzarella",v:1.75,u:"kg"},{n:"Wurstel",k:"wurstel",v:250,u:"gr"},
+            {n:"Olio EVO",k:"olio",v:120,u:"ml"},{n:"Sale",k:"sale",v:45,u:"gr"}]}
    ]}
  ]}
 ];
