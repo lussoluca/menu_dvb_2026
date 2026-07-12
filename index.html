@@ -186,9 +186,12 @@ const MENU = [
      {name:"Colazione", ings:[{n:"Latte UHT",k:"latte",v:6,u:"lt"},{n:"Pane",k:"pane",v:1800,u:"gr"},{n:"Marmellata",k:"marmellata",v:900,u:"gr"}]}
    ]},
    {meal:"Pranzo", dishes:[
-     {name:"Pasta al ragù di verdure",
-      ings:[{n:"Pasta",k:"pasta",v:3.5,u:"kg"},{n:"Ragù di verdure",k:"ragu-verdure",ready:true},
-            {n:"Sale",k:"sale",v:35,u:"gr"}]},
+     {name:"Pasta al ragù di verdure", note:"ragù: melanzane, zucchine, passata e soffritto",
+      ings:[{n:"Pasta",k:"pasta",v:3.5,u:"kg"},
+            {n:"Melanzane",k:"melanzane",v:2000,u:"gr"},{n:"Zucchine",k:"zucchine",v:1500,u:"gr"},
+            {n:"Passata di pomodoro",k:"passata",v:2000,u:"gr"},
+            {n:"Cipolla",k:"cipolla",v:300,u:"gr"},{n:"Carote",k:"carote",v:200,u:"gr"},{n:"Sedano",k:"sedano",v:150,u:"gr"},
+            {n:"Olio EVO",k:"olio",v:100,u:"ml"},{n:"Sale",k:"sale",v:35,u:"gr"}]},
      {name:"Insalata", ings:[{n:"Insalata",k:"insalata",v:1700,u:"gr"},
             {n:"Olio EVO",k:"olio",v:120,u:"ml"},{n:"Sale",k:"sale",v:12,u:"gr"}]},
      {name:"Carote", ings:[{n:"Carote",k:"carote",v:1700,u:"gr"}]},
@@ -203,6 +206,7 @@ const MENU = [
      {name:"Passato di verdura con crostini",
       ings:[{n:"Patate",k:"patate",v:1700,u:"gr"},{n:"Porri",k:"porri",v:700,u:"gr"},
             {n:"Carote",k:"carote",v:900,u:"gr"},{n:"Piselli",k:"piselli",v:900,u:"gr"},
+            {n:"Zucchine",k:"zucchine",v:900,u:"gr"},{n:"Basilico",k:"basilico",v:1,u:"pz",note:"mazzo"},
             {n:"Pane (crostini)",k:"pane",v:900,u:"gr"},
             {n:"Olio EVO",k:"olio",v:70,u:"ml"},{n:"Sale",k:"sale",v:25,u:"gr"}]},
      {name:"Bastoncini di pesce",
@@ -218,6 +222,30 @@ const MENU = [
  {day:"Venerdì", meals:[
    {meal:"Colazione", dishes:[
      {name:"Colazione", ings:[{n:"Latte UHT",k:"latte",v:6,u:"lt"},{n:"Biscotti",k:"biscotti",v:1800,u:"gr"}]}
+   ]},
+   {meal:"Pranzo", dishes:[
+     {name:"Ravioli cinesi (jiaozi)", note:"impasto: farina e acqua; ripieno: macinato, cavolo cinese, zenzero, cipollotto, aglio, condito con salsa di soia, olio di sesamo, zucchero e sale; salsa di soia extra per intingere",
+      ings:[{n:"Farina",k:"farina",v:3,u:"kg"},{n:"Acqua",k:"acqua",v:1.5,u:"lt"},
+            {n:"Macinato di carne",k:"macinato",v:3000,u:"gr"},{n:"Cavolo cinese",k:"cavolo",v:2000,u:"gr"},
+            {n:"Zenzero fresco",k:"zenzero",v:60,u:"gr"},{n:"Cipollotto",k:"cipollotto",v:200,u:"gr"},{n:"Aglio",k:"aglio",v:30,u:"gr"},
+            {n:"Salsa di soia",k:"salsa-soia",v:500,u:"ml"},{n:"Olio di sesamo",k:"olio-sesamo",v:80,u:"ml"},
+            {n:"Zucchero",k:"zucchero",v:20,u:"gr"},{n:"Sale",k:"sale",v:30,u:"gr"}]},
+     {name:"Dorayaki", note:"dolce giapponese: pancake ripieni; ~2 a persona. Ripieno con marmellata al posto dell'anko",
+      ings:[{n:"Uova",k:"uova",v:15,u:"pz"},{n:"Zucchero",k:"zucchero",v:450,u:"gr"},
+            {n:"Farina",k:"farina",v:750,u:"gr"},{n:"Miele",k:"miele",v:150,u:"gr"},
+            {n:"Lievito per dolci",k:"lievito-dolci",v:3,u:"pz",note:"bustine"},
+            {n:"Marmellata",k:"marmellata",v:1500,u:"gr"},{n:"Latte",k:"latte",v:300,u:"ml"}]}
+   ]},
+   {meal:"Cena", dishes:[
+     {name:"Noodles saltati con verdure e uova", note:"verdure saltate e uova strapazzate",
+      ings:[{n:"Noodles",k:"noodles",v:3,u:"kg"},{n:"Cipolla",k:"cipolla",v:600,u:"gr"},
+            {n:"Zucchine",k:"zucchine",v:1500,u:"gr"},{n:"Carote",k:"carote",v:1000,u:"gr"},
+            {n:"Uova",k:"uova",v:18,u:"pz"},
+            {n:"Salsa di soia",k:"salsa-soia",v:300,u:"ml"},{n:"Olio EVO",k:"olio",v:100,u:"ml"},{n:"Sale",k:"sale",v:20,u:"gr"}]},
+     {name:"Cheesecake", note:"torta fredda senza cottura, riposo 4-5h in frigo. Ricetta primochef scalata a 30 porzioni",
+      ings:[{n:"Biscotti secchi (Digestive)",k:"biscotti",v:2250,u:"gr"},{n:"Burro",k:"burro",v:1125,u:"gr"},
+            {n:"Philadelphia",k:"philadelphia",v:1900,u:"gr"},{n:"Mascarpone",k:"mascarpone",v:1900,u:"gr"},
+            {n:"Panna fresca",k:"panna",v:1500,u:"ml"},{n:"Zucchero a velo",k:"zucchero-velo",v:750,u:"gr"}]}
    ]}
  ]},
  {day:"Sabato", meals:[
@@ -256,6 +284,12 @@ const MENU = [
  {day:"Domenica", note:"giorno di partenza", meals:[
    {meal:"Colazione", dishes:[
      {name:"Colazione", ings:[{n:"Latte UHT",k:"latte",v:6,u:"lt"},{n:"Biscotti",k:"biscotti",v:1800,u:"gr"}]}
+   ]}
+ ]},
+ {day:"Dispensa", note:"alimenti non legati a un giorno specifico", meals:[
+   {meal:"Varie", dishes:[
+     {name:"Varie",
+      ings:[{n:"Limoni",k:"limoni",v:15,u:"pz"}]}
    ]}
  ]}
 ];
