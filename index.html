@@ -68,6 +68,7 @@
   <section id="shop">
     <h2>🛒 Lista della spesa</h2>
     <p class="controls">Somma automatica per ingrediente (uguali sommati tra piatti). Esclude i "Già pronto".</p>
+    <p class="controls"><input type="search" id="shopSearch" placeholder="🔍 Cerca ingrediente o piatto…" autocomplete="off" style="width:100%;max-width:320px;padding:6px 8px;font-size:.9rem"></p>
     <table>
       <thead><tr><th>Ingrediente</th><th style="text-align:right">Totale</th><th>Usato in</th></tr></thead>
       <tbody id="shopBody"></tbody>
@@ -370,7 +371,17 @@ function updateShop(){
     td3.textContent=[...a.dishes].join(", ");tr.appendChild(td3);
     body.appendChild(tr);
   });
+  filterShop();
 }
+
+// filtro locale della lista della spesa (ingrediente o piatto)
+function filterShop(){
+  const q=(document.getElementById("shopSearch").value||"").trim().toLowerCase();
+  document.querySelectorAll("#shopBody tr").forEach(tr=>{
+    tr.style.display = !q || tr.textContent.toLowerCase().includes(q) ? "" : "none";
+  });
+}
+document.getElementById("shopSearch").addEventListener("input",filterShop);
 
 render();
 updateShop();
