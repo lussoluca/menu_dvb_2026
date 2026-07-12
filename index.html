@@ -81,6 +81,13 @@
 // i = ingrediente: {n:nome, k:chiave-merge, v:valore, u:unità, note?, flag?, ready?}
 // unità: gr, kg, ml, lt, pz  → normalizzate per la somma
 const MENU = [
+ {day:"Domenica", meals:[
+   {meal:"Cena", dishes:[
+     {name:"Pasta al pomodoro",
+      ings:[{n:"Pasta",k:"pasta",v:3.5,u:"kg"},{n:"Polpa di pomodoro",k:"polpa-pomodoro",v:2300,u:"gr"},
+            {n:"Olio EVO",k:"olio",v:120,u:"ml"},{n:"Sale",k:"sale",v:35,u:"gr"}]}
+   ]}
+ ]},
  {day:"Lunedì", meals:[
    {meal:"Pranzo", dishes:[
      {name:"Insalata di riso",
