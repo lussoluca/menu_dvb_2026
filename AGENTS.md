@@ -51,7 +51,7 @@ node -e "const fs=require('fs');const h=fs.readFileSync('index.html','utf8');con
 
 ## Print
 
-`@media print` hides the header, the menu, and the `.controls`, printing **only the shopping list**. Keep this behavior when editing CSS.
+`@media print` hides the header, the menu, and the `.controls`. Default print (button "Stampa lista spesa" or ⌘P) prints **only the shopping list**. The "Stampa menu" button builds a compact two-column menu (`#printMenu`, dishes with current doses inline) and prints only that, via the `print-menu` class on `<body>` (removed on `afterprint`). Keep both behaviors when editing CSS.
 
 ## Deploy
 

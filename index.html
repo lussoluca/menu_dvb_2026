@@ -47,12 +47,22 @@
   button{background:var(--accent);color:#fff;border:none;padding:8px 14px;border-radius:8px;
          cursor:pointer;font-size:.9rem}
   @media(max-width:560px){.ing{grid-template-columns:1fr 90px 46px}}
+  #printMenu{display:none}
   @media print{
     header,#menu,.controls{display:none}
     main{max-width:none;padding:0;margin:0}
     #shop{margin-top:0}
     #shop h2{border-bottom:2px solid #000}
     table{border:none}
+    /* modalità "stampa menu": mostra solo il menu compatto */
+    body.print-menu #shop{display:none}
+    body.print-menu #printMenu{display:block;column-count:2;column-gap:22px;
+                               font-size:.7rem;line-height:1.3;color:#000}
+    #printMenu h2{column-span:all;margin:0 0 8px;font-size:1rem;border-bottom:2px solid #000;padding-bottom:3px}
+    .pm-day{break-inside:avoid;margin:0 0 10px}
+    .pm-day h3{margin:0 0 2px;font-size:.82rem;border-bottom:1.5px solid #000;padding-bottom:1px}
+    .pm-meal{font-weight:700;margin:4px 0 1px;text-transform:capitalize}
+    .pm-dish{margin:0 0 3px}
   }
 </style>
 </head>
@@ -73,8 +83,11 @@
       <thead><tr><th>Ingrediente</th><th style="text-align:right">Totale</th><th>Usato in</th></tr></thead>
       <tbody id="shopBody"></tbody>
     </table>
-    <p class="controls"><button onclick="window.print()">🖨️ Stampa</button></p>
+    <p class="controls"><button onclick="window.print()">🖨️ Stampa lista spesa</button>
+    <button onclick="printMenu()">📄 Stampa menu</button></p>
   </section>
+
+  <section id="printMenu"></section>
 </main>
 
 <script>
@@ -382,6 +395,52 @@ function filterShop(){
   });
 }
 document.getElementById("shopSearch").addEventListener("input",filterShop);
+
+// ---- STAMPA MENU COMPATTO ----
+// ricostruisce #printMenu dal DOM del menu (così usa le dosi correnti degli input)
+function buildPrintMenu(){
+  const out=document.getElementById("printMenu");
+  out.innerHTML="";
+  const h=document.createElement("h2");
+  h.textContent="🐺 Menu Vacanze di Branco — 32 persone (30 porzioni equivalenti)";
+  out.appendChild(h);
+  document.querySelectorAll("#menu > div").forEach(dayDiv=>{
+    const sec=document.createElement("section");sec.className="pm-day";
+    [...dayDiv.children].forEach(el=>{
+      if(el.classList.contains("day")){
+        const t=document.createElement("h3");t.textContent=el.textContent;sec.appendChild(t);
+      }else if(el.classList.contains("meal")){
+        const m=document.createElement("div");m.className="pm-meal";m.textContent=el.textContent;sec.appendChild(m);
+      }else if(el.classList.contains("dish")){
+        const parts=[];
+        el.querySelectorAll(".ing").forEach(row=>{
+          const name=row.querySelector("label").textContent;
+          const inp=row.querySelector("input");
+          if(inp){
+            const un=UNIT[inp.dataset.u];
+            parts.push(name+" "+fmt((parseFloat(inp.value)||0)*un.f,un.g));
+          }else{
+            parts.push(name+" (già pronto)");
+          }
+        });
+        const p=document.createElement("p");p.className="pm-dish";
+        const b=document.createElement("strong");
+        b.textContent=el.querySelector("h3").textContent;
+        p.appendChild(b);
+        if(parts.length) p.appendChild(document.createTextNode(" — "+parts.join(", ")));
+        sec.appendChild(p);
+      }
+    });
+    out.appendChild(sec);
+  });
+}
+
+function printMenu(){
+  buildPrintMenu();
+  document.body.classList.add("print-menu");
+  window.print();
+}
+window.addEventListener("afterprint",()=>document.body.classList.remove("print-menu"));
 
 render();
 updateShop();
